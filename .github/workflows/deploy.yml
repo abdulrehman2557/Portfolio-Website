@@ -2,7 +2,10 @@ name: Deploy HTML-CSS Website
 
 on:
   push:
-    branches: [ "main" ]   # Run when code is pushed to main branch
+    branches: [ "main" ]   # Run only when pushing to main branch
+
+permissions:
+  contents: write   # 👈 This gives Actions permission to push to gh-pages branch
 
 jobs:
   deploy:
@@ -16,4 +19,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .   # Root folder where index.html is present
+        publish_dir: .   # Root folder where index.html is located
